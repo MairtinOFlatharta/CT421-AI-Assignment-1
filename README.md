@@ -30,6 +30,8 @@
 ## About The Repo
 This repo holds all of my code solutions for assignment 1 of CT421: Artificial Intelligence.
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 <!-- BUILT WITH -->
 ### Built With
 These solutions were written using the latest version of python (currently 3.10.2).
@@ -37,6 +39,8 @@ These are the requirements for using these scripts:
 * [Python](https://www.python.org/downloads/) (3.10.1 or better)
 * [numpy](https://numpy.org/)
 * [matplotlib](https://matplotlib.org/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- PART A -->
 ## Part A
@@ -52,6 +56,8 @@ generation is then plotted using matplotlib.
 
 The fitness of a chromosome is equal to how many binary 1 are present.
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 <!-- II: EVOLVING TO A TARGET STRING -->
 ### ii): Evolving to a target string
 Solution: [target_string.py](./target_string.py)<br>
@@ -61,6 +67,8 @@ generated at runtime.
 
 The fitness of a chromosome is equal to the number of bits it has in common
 with the target string.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- III: DECEPTIVE LANDSCAPE -->
 ### iii): Deceptive Landscape
@@ -74,6 +82,8 @@ fitness of a bit-string with all ones.
 It is observed that the GA never achieves the global optimum of 0. Even if a
 value of 0 is present in the initial random population, it will be lost in
 the next generation due to mutation and crossover.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- IV: EVOLVING TO A TARGET STRING WITH A LARGER ALPHABET -->
 ### iv): Evolving to a target string with a larger alphabet
@@ -99,6 +109,8 @@ target digit. For example:
 |8|2|4|
 |3|6|3|
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 <!-- PART B -->
 ## Part B
 Solution: [knapsack_ga.py](./knapsack_ga.py)<br>
@@ -114,3 +126,5 @@ Fitness is assigned to each chromosome based on the value of all items inside.
 If the knapsack exceeds the weight limit assigned, a fitness of 0 is given.
 The best knapsack and average score of each generation is graphed using
 matplotlib.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
