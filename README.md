@@ -14,10 +14,10 @@
     <li>
       <a href="#part-a">Part A</a>
       <ul>
-        <li><a href="#i):-one-max-problem">i): One-max problem</a></li>
-        <li><a href="#ii):-evolving-to-a-target-string">ii): Evolving to a target string</a></li>
-        <li><a href="#iii):-deceptive-landscape">iii): Deceptive Landscape</a></li>
-        <li><a href="#iv):-evolving-to-a-target-string-with-a-larger-alphabet">iv): Evolving to a target string with a larger alphabet</a></li>
+        <li><a href="#i-one-max-problem">i): One-max problem</a></li>
+        <li><a href="#ii-evolving-to-a-target-string">ii): Evolving to a target string</a></li>
+        <li><a href="#iii-deceptive-landscape">iii): Deceptive Landscape</a></li>
+        <li><a href="#iv-evolving-to-a-target-string-with-a-larger-alphabet">iv): Evolving to a target string with a larger alphabet</a></li>
       </ul>
     </li>
     <li>
