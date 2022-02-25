@@ -5,14 +5,18 @@ from numpy.random import randint, rand, choice
 
 
 # Values of all items
-values = [484, 100, 215, 418, 450, 289, 240, 157, 322, 112,
-          169, 325, 253, 377, 141, 331, 300, 249, 361, 387]
+values = [825594, 1677009, 1676628, 1523970, 943972, 97426, 69666, 1296457,
+          1679693, 1902996, 1844992, 1049289, 1252836, 1319836, 953277,
+          2067538, 675367, 853655, 1826027, 65731, 901489, 577243, 466257,
+          369261]
 # Weights of all items
-weights = [9, 6, 1, 3, 1, 4, 12, 11, 4, 8, 1, 12, 14, 13, 10, 2, 11, 2, 4, 9]
+weights = [382745, 799601, 909247, 729069, 467902, 44328, 34610, 698150,
+           823460, 903959, 853665, 551830, 610856, 670702, 488960, 951111,
+           323046, 446298, 931161, 31385, 496951, 264724, 224916, 169684]
 # Maximum weight that knapsack can hold
-W = 35
+W = 6404180
 # Size of each chromosome population
-population_size = 100
+population_size = 500
 # Number of items and length of bitstrings
 n_items = len(values)
 # Chance of a chromosome mutating
@@ -37,7 +41,7 @@ def main():
         population.append(randint(0, max_value+1))
 
     results = genetic_algorithm(population)
-    print(f'Best knapsack found: {results[0]:020b}')
+    print(f'Best knapsack found: {results[0]:024b}')
     print(f'Best score: {results[1]}')
     plot_averages(averages, total_iter)
 
@@ -63,7 +67,7 @@ def genetic_algorithm(population):
         if best_score > fitness(best_knapsack, values, weights, W):
             best_knapsack = population[best_index]
         print(f'Generation {gen+1}')
-        print(f'Best item: {population[best_index]:010b}')
+        print(f'Best item: {population[best_index]:024b}')
         print(f'Item score: {best_score}')
         print(f'Generation average score: {averages[gen]}\n')
 
@@ -135,7 +139,7 @@ def crossover(parent_1, parent_2):
     return child_1, child_2
 
 
-def tournament_selection(population, scores, rounds=5):
+def tournament_selection(population, scores, rounds=3):
 
     # Pick some random index in population
     best_chrom = randint(0, population_size)
@@ -159,8 +163,8 @@ def fitness(chrom, values, weights, W):
     if weight_total <= W:
         # Weight is below threshold. Return total
         return value_total
-    # Weight exceeded limit. Return bad fitness
-    return 0
+    # Weight exceeded limit. Return extra weight as negative
+    return (W - weight_total)
 
 
 def plot_averages(averages, total_iter):
@@ -169,6 +173,7 @@ def plot_averages(averages, total_iter):
     plt.plot(range(1, total_iter+1), best_fitness, marker='o',
              label='Best Fitness')
     plt.legend(['Average Fitness', 'Best Fitness'])
+    plt.ticklabel_format(style='plain')
     plt.title(f'Average fitness and best fitness over {total_iter} '
               'generations (Knapsack GA)')
     plt.xlabel('Generation')
