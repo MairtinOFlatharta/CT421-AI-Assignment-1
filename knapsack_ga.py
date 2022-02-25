@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import statistics
 import matplotlib.pyplot as plt
-from numpy.random import randint, rand
+from numpy.random import randint, rand, choice
 
 
 # Values of all items
@@ -88,8 +88,27 @@ def genetic_algorithm(population):
 def mutate(chrom):
     # Flip 1 random bit in the chromosome (if mutation is triggered)
     if rand() < mutation_rate:
-        index = randint(0, n_items)
-        return (chrom ^ (1 << index))
+        # Either remove or add item based on randomly chosen index value
+        if rand() < 0.5:
+            index = randint(0, n_items)
+            return (chrom ^ (1 << index))
+        else:
+            # Replace item in knapsack with some other item
+
+            # Generate list of indicies of items that are in knapsack
+            taken = [x for x in range(n_items)
+                     if ((chrom >> (n_items - x - 1)) & 1)]
+
+            # Generate list of indicies of items that are not in knapsack
+            not_taken = [x for x in range(n_items) if x not in taken]
+
+            # Pick 1 random item to remove, and 1 random item to add
+            item_to_remove = choice(taken)
+            item_to_take = choice(not_taken)
+
+            # Perform the item replacement
+            chrom = (chrom ^ (1 << (n_items - item_to_remove - 1)))
+            chrom = (chrom ^ (1 << (n_items - item_to_take - 1)))
     return chrom
 
 
@@ -149,6 +168,7 @@ def plot_averages(averages, total_iter):
              label='Average Fitness')
     plt.plot(range(1, total_iter+1), best_fitness, marker='o',
              label='Best Fitness')
+    plt.legend(['Average Fitness', 'Best Fitness'])
     plt.title(f'Average fitness and best fitness over {total_iter} '
               'generations (Knapsack GA)')
     plt.xlabel('Generation')
