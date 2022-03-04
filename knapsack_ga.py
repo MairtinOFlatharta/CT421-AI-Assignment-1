@@ -16,15 +16,15 @@ weights = [382745, 799601, 909247, 729069, 467902, 44328, 34610, 698150,
 # Maximum weight that knapsack can hold
 W = 6404180
 # Size of each chromosome population
-population_size = 500
+population_size = 100
 # Number of items and length of bitstrings
 n_items = len(values)
 # Chance of a chromosome mutating
-mutation_rate = 0.5
+mutation_rate = 0.3
 # Chance of a crossover occuring between 2 parent chromosomes
-crossover_rate = 0.9
+crossover_rate = 0.6
 # Total number of generations produced
-total_iter = 10
+total_iter = 50
 # List of average fitness of each generation
 averages = []
 # List of best fitness of each generation
@@ -168,9 +168,9 @@ def fitness(chrom, values, weights, W):
 
 
 def plot_averages(averages, total_iter):
-    plt.plot(range(1, total_iter+1), averages, marker='o',
+    plt.plot(range(1, total_iter+1), averages,
              label='Average Fitness')
-    plt.plot(range(1, total_iter+1), best_fitness, marker='o',
+    plt.plot(range(1, total_iter+1), best_fitness,
              label='Best Fitness')
     plt.legend(['Average Fitness', 'Best Fitness'])
     plt.ticklabel_format(style='plain')
